@@ -1,0 +1,13 @@
+version '3'
+
+services:
+  grocery_app:
+   build: ./spring-boot-apps
+   ports:
+    - "8081:8080"
+  dependes_on:
+    - grocery_db
+  grocery_db:
+   image: centos_postgres:v1        
+
+
