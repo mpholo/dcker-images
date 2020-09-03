@@ -3,15 +3,16 @@ version: '3.1'
 services:
 
   grocery_app:
-    build: .
+    image: grocery_app
     container_name: grocery_app
     restart: always
     ports:
-     - 8081:8080
+     - 8082:8080
     depends_on:
      - grocery_db
   grocery_db:
-    image: centos_postgres:v1         
+    image: centos_postgres:v1        
+    container_name: grocery_db 
     volumes:
      - /data/postgres-data:/var/lib/postgresql/data
     ports:
