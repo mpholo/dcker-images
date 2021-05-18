@@ -10,9 +10,12 @@ services:
      - 8082:8080
     depends_on:
      - grocery_db
+    volumes:
+     - /data/files:/tmp        
   grocery_db:
-    image: centos_postgres:v1        
+    image: grocery_db:v1        
     container_name: grocery_db 
+    restart: always
     volumes:
      - /data/postgres-data:/var/lib/postgresql/data
     ports:

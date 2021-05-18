@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  bookstore_app:
+    build:
+      context: .
+      dockerfile: Dockerfile_app
+    image: bookstore_app:v1
+    container_name: bookstore_app
+    restart: always
+    ports:
+     - 5000:8080
+    depends_on:
+     - bookstore_db
+    volumes:
+     - /data/files:/tmp/bookstore        
+  bookstore_db:
+    build:  
+      context: .
+      dockerfile: Dockerfile_db
+    image: bookstore_db:v1        
+    container_name: bookstore_db 
+    volumes:
+     - /data/bookstore-data:/var/lib/postgresql/data
+    ports:
+     - 5433:5432       
+
+
+         
